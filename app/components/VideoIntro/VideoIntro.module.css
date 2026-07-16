@@ -1,0 +1,312 @@
+.heroContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #05070b;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+}
+
+/* कर्सर और ब्लर एफेक्ट्स */
+.customCursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #FFB834;
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.2s, height 0.2s;
+}
+
+.ambientWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  transform: scale(1.12);
+  filter: blur(80px) brightness(0.4) saturate(1.4);
+  pointer-events: none;
+}
+
+.ambientVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vignetteOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 20%, rgba(3, 5, 8, 0.65) 70%, rgba(2, 3, 5, 0.95) 100%);
+  z-index: 1;
+}
+
+.gradientBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35vh;
+  background: linear-gradient(to top, #070B0E 0%, transparent 100%);
+  z-index: 1;
+}
+
+.contentGrid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 4rem;
+  z-index: 3;
+}
+
+.videoWindowFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.mainVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+}
+
+.tagline {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: #FFB834;
+  margin-bottom: 1.5rem;
+}
+
+.giantTitle {
+  font-size: 5.5rem;
+  font-weight: 900;
+  line-height: 0.95;
+  margin-bottom: 2rem;
+}
+
+.accentText {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.75);
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #9BB1C2;
+  max-width: 480px;
+}
+
+/* प्रीमियम बटन्स */
+.primaryBtn {
+  background: #FFB834;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 184, 52, 0.3);
+}
+
+.ghostBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ghostBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ग्लास कार्ड और टैग्स */
+.glassCard {
+  background: rgba(24, 34, 45, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.glassCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 184, 52, 0.3);
+}
+
+.tagLabel {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  color: #9BB1C2;
+}
+
+/* कंट्रोल्स और विजेट्स */
+.controlsContainer {
+  position: absolute;
+  top: 3rem;
+  right: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 4;
+}
+
+.glassControlGroup {
+  display: flex;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  padding: 0.35rem;
+}
+
+.controlBtn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.soundHint {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 184, 52, 0.1);
+  border: 1px solid rgba(255, 184, 52, 0.25);
+  padding: 0.5rem 1.1rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  background-color: #FFB834;
+  border-radius: 50%;
+}
+
+/* चैटबॉट कंटेनर */
+.chatbotContainer {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.chatbotToggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #FFB834;
+  color: #000;
+  font-size: 1.8rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255, 184, 52, 0.4);
+}
+
+.chatbotWindow {
+  width: 350px;
+  height: 450px;
+  background: #10171E;
+  border: 1px solid #FFB834;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.chatbotHeader {
+  background: rgba(255, 184, 52, 0.1);
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* स्क्रॉल बार */
+.scrollIndicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 4;
+}
+
+.scrollLabel {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.pulseLine {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, #FFB834, transparent);
+}
+
+/* रिस्पॉन्सिव */
+@media (max-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 0 2rem;
+  }
+  .videoWindowFrame {
+    max-width: 550px;
+    margin: 4rem auto 0 auto;
+  }
+  .giantTitle {
+    font-size: 3.8rem;
+  }
+  .controlsContainer {
+    right: 2rem;
+    top: 2rem;
+  }
+}
